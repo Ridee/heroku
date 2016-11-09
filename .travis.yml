@@ -9,7 +9,7 @@ install:
   - pip install tox
 script:
   - if [ $(python --version 2>&1| cut -c 8,10) == '35' ]; then tox -e flake8; fi
-  - tox -e py$(python --version 2>&1| cut -c 8,10))
+  - tox -e py$(python --version 2>&1| cut -c 8,10)
 after_success:
   - if [ $(python --version 2>&1| cut -c 8,10) == '35' ]; then pip install coveralls; coveralls; fi
 notifications:
