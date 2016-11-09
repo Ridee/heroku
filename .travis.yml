@@ -1,0 +1,20 @@
+language: python
+python: 2.7
+env:
+  - TOX_ENV=py27
+  - TOX_ENV=py33
+  - TOX_ENV=py34
+  - TOX_ENV=py35
+  - TOX_ENV=flake8
+install:
+  - pip install tox
+script:
+  - tox -e $TOX_ENV
+after_success:
+  - if [ $TOX_ENV == 'py35' ]; then pip install coveralls; coveralls; fi
+notifications:
+  slack:
+    rooms:
+      secure: DRQDqQEmBZY/FeXmDaQPQYp/2zkAiOmPQuJkL9IHBCSFky88HyVHKOxuNrs0mpMSCrdmA2mJEFrQVA59c5RTt/2QKG2N8cLRm+eb2yL3dFSYnTX/NuHyNiyp356p0btR2wtYBggaRjuTGZWb1ITvHcWo+wd3gylnngdEfmdQuLz6Q2m7yEmjs77//91/pxpJsGhHARyrkFnf4rgzYOFAcgQhP2L1ilUN4aFdGKSlTwvznwSUJ+xfd8bUfPRDpL3scyluaM7Set/KZqUXzkeUR9AGCHrcxjvyHEIRLbKkQQM+Vv2XXqJzS01hQ9RoiSSyQFWYL4+Tx+Bb9Y9vuBr4lE3SfjwA8Sa7D43IDNxTbG3kfleXsgRs8gq6PMjL3+glLMz/RUsNbj+d4GL0dnstv1BCj5q+s0q5Hf9fYadeWSeuxCmO0JFcFD49vxK8/HwIBna7OPjU+nGYQg0kF/i03qGdow+PMsf+hrtAjaLwG/jHC3nlJdpX3de+mTR2/E2HWyuYHgb3FN1qEyz1cGvmZ/xnkG5zQNLDs3/+SwdSoghOhIWUoyltOI7AM/Y6blY7e+dIxH/fvCP1pBKOwPmwHAh+eV6y/2jxL6MNs97sfPwlWgJ3iNegMhtzknF/grulMz7lY0AF3ZpsUn38/qBULsD73kwLbbJl1fM5PiWVxXI=
+    on_success: change
+    on_failure: change

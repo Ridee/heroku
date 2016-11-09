@@ -1,0 +1,11 @@
+flake8
+flake8-import-order
+mock
+pep8-naming
+pytest
+pytest-capturelog
+pytest-cov
+pytest-mock
+pytest-timeout
+pytest-xdist
+tox
