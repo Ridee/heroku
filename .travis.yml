@@ -8,10 +8,10 @@ python:
 install:
   - pip install tox
 script:
-  - if [ $(python --version 2>&1| cut -c 8,10)) == '35' ]; then tox -e flake8; fi
+  - if [ $(python --version 2>&1| cut -c 8,10) == '35' ]; then tox -e flake8; fi
   - tox -e py$(python --version 2>&1| cut -c 8,10))
 after_success:
-  - if [ $TOX_ENV == 'py35' ]; then pip install coveralls; coveralls; fi
+  - if [ $(python --version 2>&1| cut -c 8,10) == '35' ]; then pip install coveralls; coveralls; fi
 notifications:
   slack:
     rooms:
