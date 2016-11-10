@@ -29,7 +29,7 @@ def make_request(method, uri, headers=None, body=None):
     :param dict headers: Headers to send
     :param str|unicode body: Body to send
     :return: Request result
-    :rtype: Tuple of return_code (int), headers (dict), body (str|bytes)
+    :rtype: Tuple of return_code (int), headers (list of (k,v) tuples), body (str|bytes)
     """
     parsed_url = urlparse(uri)
     if parsed_url.scheme == 'https':
@@ -43,7 +43,7 @@ def make_request(method, uri, headers=None, body=None):
     response = connector.getresponse()
     status_code = response.status
     body = response.read()
-    headers = response.headers
+    headers = response.getheaders()
     return status_code, headers, body
 
 
